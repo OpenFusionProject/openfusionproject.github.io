@@ -41,6 +41,7 @@
       "script",
       "section",
       "small",
+      "source",
       "span",
       "strong",
       "style",
@@ -55,7 +56,8 @@
       "time",
       "title",
       "tr",
-      "ul"
+      "ul",
+      "video"
     ],
     "classes": [
       "DocSearch-Label",
