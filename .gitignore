@@ -86,3 +86,9 @@ typings/
 
 # DynamoDB Local files
 .dynamodb/
+
+# Doks specific
+.netlify
+.hugo_build.lock
+public
+resources

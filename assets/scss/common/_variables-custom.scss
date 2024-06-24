@@ -1,0 +1,54 @@
+// Put your custom SCSS variables here
+
+// Light mode
+$primary: #50dc51;
+$secondary: green;
+$focus: #50dc51;
+$link-color: #50dc51;
+$button-color: #50dc51;
+$button-hover-color: #50dc51;
+$success: green;
+$info: blue;
+$warning: yellow;
+$danger: red;
+
+// Dark mode
+$primary-dark: #50dc51;
+$secondary-dark: green;
+$focus-dark: #50dc51;
+$link-color-dark: #50dc51;
+$button-color-dark: #50dc51;
+$button-hover-color-dark: #50dc51;
+$success-dark: green;
+$info-dark: blue;
+$warning-dark: yellow;
+$danger-dark: red;
+
+:root
+.header-bar {
+    border-image-source: linear-gradient(83.21deg, var(--sl-color-accent-low) 0%, var(--sl-color-green) 100%);
+}
+
+:root[data-bs-theme="light"]
+.header-bar {
+    border-image-source: linear-gradient(83.21deg, var(--sl-color-accent-low) 0%, var(--sl-color-green) 100%);
+}
+
+:root[data-bs-theme="dark"]
+.header-bar {
+    border-image-source: linear-gradient(83.21deg, var(--sl-color-accent-low) 0%, var(--sl-color-green) 100%);
+}
+
+:root[data-bs-theme="dark"] .navbar .btn-link:hover {
+    color: #50dc51;
+}
+
+:root,
+::backdrop {
+    --sl-color-text-accent: #50dc51;
+	--sl-color-blue-high: var(--sl-color-green-high);
+    --sl-color-accent-low: var(--sl-color-green-low);
+    --sl-color-accent-high: var(--sl-color-green-high);
+    --sl-color-accent: var(--sl-color-green);
+}
+
