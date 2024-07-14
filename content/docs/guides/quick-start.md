@@ -27,7 +27,7 @@ seo:
 4. To create an account, simply enter the details you wish to use at the login screen then click Log In. Do *not* click register, as this will just lead to a blank screen.
 5. Make a new character, and enjoy the game! Your progress will be saved automatically, and you can resume playing by entering the login details you used in step 4.
 
-Instructions for getting the client to run on Linux through Wine can be found [here](https://github.com/OpenFusionProject/OpenFusion/wiki/Running-the-game-client-on-Linux).
+Instructions for getting the client to run on Linux through Wine can be found [here](/docs/guides/running-on-linux/).
 
 If you run into any issues, try checking [the FAQ](/docs/reference/frequently-asked-questions) or ask for assistance in our Discord server.
 
