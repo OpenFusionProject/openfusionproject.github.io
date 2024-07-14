@@ -87,8 +87,11 @@ typings/
 # DynamoDB Local files
 .dynamodb/
 
+# Hugo
+hugo_stats.json
+.hugo_build.lock
+
 # Doks specific
 .netlify
-.hugo_build.lock
 public
 resources

@@ -5,8 +5,10 @@
 *.toml
 *.*ignore
 *.svg
+*.webm
 *.xml
 LICENSE
 .npmrc
 .gitkeep
 *.woff*
+content/
