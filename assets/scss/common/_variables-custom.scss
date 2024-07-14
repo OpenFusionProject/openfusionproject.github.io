@@ -24,18 +24,15 @@ $info-dark: blue;
 $warning-dark: yellow;
 $danger-dark: red;
 
-:root
-.header-bar {
+:root .header-bar {
     border-image-source: linear-gradient(83.21deg, var(--sl-color-accent-low) 0%, var(--sl-color-green) 100%);
 }
 
-:root[data-bs-theme="light"]
-.header-bar {
+:root[data-bs-theme="light"] .header-bar {
     border-image-source: linear-gradient(83.21deg, var(--sl-color-accent-low) 0%, var(--sl-color-green) 100%);
 }
 
-:root[data-bs-theme="dark"]
-.header-bar {
+:root[data-bs-theme="dark"] .header-bar {
     border-image-source: linear-gradient(83.21deg, var(--sl-color-accent-low) 0%, var(--sl-color-green) 100%);
 }
 
@@ -46,9 +43,8 @@ $danger-dark: red;
 :root,
 ::backdrop {
     --sl-color-text-accent: #50dc51;
-	--sl-color-blue-high: var(--sl-color-green-high);
+    --sl-color-blue-high: var(--sl-color-green-high);
     --sl-color-accent-low: var(--sl-color-green-low);
     --sl-color-accent-high: var(--sl-color-green-high);
     --sl-color-accent: var(--sl-color-green);
 }
-
