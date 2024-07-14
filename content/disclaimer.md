@@ -16,7 +16,7 @@ This fan project, OpenFusion, is an independent initiative and is not affiliated
 
 Any use of these marks is solely for the purpose of identification and does not imply any relationship, sponsorship, or endorsement by the respective owners. OpenFusion respects the intellectual property rights of others and endeavors to use these marks in compliance with applicable laws.
 
-Please be aware that OpenFusion is a fan-made project created by enthusiasts for entertainment purposes only.
+Please be aware that OpenFusion is a fan-made project created by enthusiasts for entertainment and educational purposes only.
 
 The OpenFusion server software is released under the MIT license. The license for other software can be found in their [respective repositories](https://github.com/OpenFusionProject/).
 
