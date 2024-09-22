@@ -5,5 +5,5 @@
   [en.params]
     languageISO = "EN"
     languageTag = "en-US"
-    footer = '©2020-2024 OpenFusion Contributors <br> Website built with <a class="text-muted" href="https://gethyas.com/">Hyas</a>'
+    footer = '©2020-2024 OpenFusion Contributors <br> Website built with <a class="text-muted" href="https://thulite.io/">Thulite</a>'
     alertText = '<a class="alert-link stretched-link fw-normal" href="/blog/openfusion-1.5.2-released/">OpenFusion 1.5.2 is out!</a>'

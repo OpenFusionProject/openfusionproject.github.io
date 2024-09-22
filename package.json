@@ -1,8 +1,8 @@
 {
-  "name": "openfusion",
+  "name": "openfusion.dev",
   "version": "0.0.0",
-  "description": "Doks theme",
-  "author": "Hyas",
+  "description": "Website for OpenFusion, the FusionFall server emulator.",
+  "author": "OpenFusion contributors",
   "license": "MIT",
   "scripts": {
     "create": "hugo new",
@@ -12,12 +12,12 @@
     "preview": "vite preview --outDir public"
   },
   "dependencies": {
-    "@hyas/doks-core": "^1.6.1",
-    "@hyas/images": "^3.2.0",
-    "@hyas/inline-svg": "^1.1.0",
-    "@hyas/seo": "^2.3.0",
-    "@tabler/icons": "^3.2.0",
-    "gethyas": "^2.4.2"
+    "@tabler/icons": "^3.17.0",
+    "@thulite/doks-core": "^1.7.0",
+    "@thulite/images": "^3.3.0",
+    "@thulite/inline-svg": "^1.2.0",
+    "@thulite/seo": "^2.4.0",
+    "thulite": "^2.5.0"
   },
   "devDependencies": {
     "prettier": "^3.2.5",
