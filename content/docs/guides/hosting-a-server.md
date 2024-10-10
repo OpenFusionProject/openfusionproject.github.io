@@ -3,7 +3,7 @@ title: "Hosting a Server"
 description: ""
 summary: ""
 date: 2024-07-14T17:57:37-05:00
-lastmod: 2024-07-14T17:57:37-05:00
+lastmod: 2024-10-10T17:19:07+02:00
 draft: false
 weight: 720
 toc: true
@@ -14,7 +14,7 @@ seo:
   noindex: false # false (default) or true
 ---
 
-1. Grab `OpenFusionServer-1.5-Original.zip` or `OpenFusionServer-1.5-Academy.zip` from [here](https://github.com/OpenFusionProject/OpenFusion/releases/tag/1.5).
+1. Grab `OpenFusionServer-1.6-Original.zip` or `OpenFusionServer-1.6-Academy.zip` from [here](https://github.com/OpenFusionProject/OpenFusion/releases/tag/1.6).
 2. Extract it to a folder of your choice, then run `winfusion.exe` (Windows) or `fusion` (Linux) to start the server.
 3. Add a new server to the client's list:
     1. For Description, enter anything you want. This is what will show up in the server list.
