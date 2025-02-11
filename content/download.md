@@ -20,8 +20,8 @@ The latest stable launcher is version **2.0**.
 The launcher is what you use to connect to FusionFall servers and play the game - it can be downloaded below.
 
 {{< card-grid >}}
-{{< link-card title="Windows 7+"  description="Installer (Recommended)" href="https://github.com/OpenFusionProject/OpenFusionLauncher/releases/latest/download/OpenFusionLauncher-Windows-Installer.exe" >}}
-{{< link-card title="Windows 7+" description="Portable" href="https://github.com/OpenFusionProject/OpenFusionLauncher/releases/latest/download/OpenFusionLauncher-Windows-Portable.zip" >}}
+{{< link-card title="Windows"  description="Installer (Recommended)" href="https://github.com/OpenFusionProject/OpenFusionLauncher/releases/latest/download/OpenFusionLauncher-Windows-Installer.exe" >}}
+{{< link-card title="Windows" description="Portable" href="https://github.com/OpenFusionProject/OpenFusionLauncher/releases/latest/download/OpenFusionLauncher-Windows-Portable.zip" >}}
 {{< /card-grid >}}
 
 {{< details "Development Builds" >}}
