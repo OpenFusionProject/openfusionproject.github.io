@@ -15,7 +15,7 @@ seo:
 
 ## Download Launcher
 
-The latest stable launcher is version **2.0**.
+The latest stable launcher is version **2.0.1**.
 
 The launcher is what you use to connect to FusionFall servers and play the game - it can be downloaded below.
 
