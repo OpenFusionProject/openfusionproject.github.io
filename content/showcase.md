@@ -21,7 +21,7 @@ seo:
 - [Original / Future Public Server Map Site](https://dexlabs.systems/)
 - [Academy Public Server Map Site](https://academy.dexlabs.systems/)
 
-### Github
+### GitHub
 
 - [OpenFusionMap](https://github.com/OpenFusionProject/OpenFusionMap)
 - [DexLabs Leaderboards](https://github.com/hichemfantar/dex-labs-leaderboards)
