@@ -49,8 +49,8 @@
   weight = 30
 
 [[main]]
-  name = "Showcase"
-  url = "/showcase"
+  name = "Projects"
+  url = "/projects"
   weight = 30
 
 [[social]]
