@@ -15,6 +15,9 @@
     margin-top: -8px;
     margin-bottom: -8px;
 }
+[data-bs-theme="dark"] .image-hover {
+    opacity: 0.4;
+}
 .image-hover:hover {
     opacity: 1;
 }
