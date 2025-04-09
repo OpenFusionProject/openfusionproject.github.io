@@ -36,11 +36,10 @@ Below you can find links to projects maintained by the OpenFusion team as well a
 - [FFSpy](https://github.com/OpenFusionProject/FFSpy)
 - [UnityPackFF](https://github.com/dongresource/UnityPackFF)
 - [FusionFall to Unity Converter](https://github.com/Eperty123/FF2Unity)
-- ~[Disunityff (DEPRECATED)](https://github.com/OpenFusionProject/disunityff)~
-- ~[OpenFusion Server Configurator (DEPRECATED)](https://github.com/Eperty123/OpenFusion-Server-Configurator)~
-- ~[OpenFusion Race Rankings Python Script (DEPRECATED)](https://gist.github.com/CakeLancelot/6e288aecfaf9d640f5b480b48cf82a95)~
-- ~[OpenFusionMap (DEPRECATED)](https://github.com/OpenFusionProject/OpenFusionMap)~
-- ~[OpenFusion Launcher (DEPRECATED)](https://github.com/Eperty123/OpenFusion-Launcher)~
-- ~[Computress Discord Bot (DEPRECATED)](https://github.com/OpenFusionProject/Computress)~
+- [Disunityff (DEPRECATED)](https://github.com/OpenFusionProject/disunityff)
+- [OpenFusion Server Configurator (DEPRECATED)](https://github.com/Eperty123/OpenFusion-Server-Configurator)
+- [OpenFusion Race Rankings Python Script (DEPRECATED)](https://gist.github.com/CakeLancelot/6e288aecfaf9d640f5b480b48cf82a95)
+- [OpenFusionMap (DEPRECATED)](https://github.com/OpenFusionProject/OpenFusionMap)
+- [Computress Discord Bot (DEPRECATED)](https://github.com/OpenFusionProject/Computress)
 
 <br/>
