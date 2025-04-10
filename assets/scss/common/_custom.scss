@@ -15,10 +15,9 @@
     margin-top: -8px;
     margin-bottom: -8px;
 }
+[data-bs-theme="dark"] .image-hover {
+    opacity: 0.6;
+}
 .image-hover:hover {
     opacity: 1;
 }
-[data-bs-theme="dark"] .image-hover {
-    opacity: 1;
-}
-
