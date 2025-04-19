@@ -1,11 +1,11 @@
 ---
-title: "Running on Linux"
+title: "Legacy Client - Deprecated"
 description: ""
 summary: ""
-date: 2024-07-14T18:32:54-05:00
-lastmod: 2024-07-14T18:32:54-05:00
+date: 2023-09-07T16:06:50+02:00
+lastmod: 2023-09-07T16:06:50+02:00
 draft: false
-weight: 730
+weight: 800
 toc: true
 seo:
   title: "" # custom title (optional)
@@ -13,5 +13,3 @@ seo:
   canonical: "" # custom canonical URL (optional)
   noindex: false # false (default) or true
 ---
-
-> Under Construction
