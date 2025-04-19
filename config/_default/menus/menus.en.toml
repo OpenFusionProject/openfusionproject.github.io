@@ -78,6 +78,11 @@
 #   weight = 10
 #
 # [[sidebar_docs]]
+#   name = "Legacy Client"
+#   pageRef = "/docs/legacy-client"
+#   weight = 10
+#
+# [[sidebar_docs]]
 #   name = "Reference"
 #   pageRef = "/docs/reference"
 #   weight = 20
