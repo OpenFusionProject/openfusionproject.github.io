@@ -2,8 +2,8 @@
 title: "Running on Linux"
 description: ""
 summary: ""
-date: 2024-07-14T18:32:54-05:00
-lastmod: 2024-07-14T18:32:54-05:00
+date: 2025-04-19T18:54:17+01:00
+lastmod: 2025-04-19T18:54:17+01:00
 draft: false
 weight: 730
 toc: true
