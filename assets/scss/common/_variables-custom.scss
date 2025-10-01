@@ -43,6 +43,8 @@ $danger-dark: red;
 :root,
 ::backdrop {
     --sl-color-text-accent: #50dc51;
+    --sl-color-blue: var(--sl-color-green);
+    --sl-color-blue-low: var(--sl-color-green-low);
     --sl-color-blue-high: var(--sl-color-green-high);
     --sl-color-accent-low: var(--sl-color-green-low);
     --sl-color-accent-high: var(--sl-color-green-high);
