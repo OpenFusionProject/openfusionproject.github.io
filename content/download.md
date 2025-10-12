@@ -8,7 +8,7 @@ draft: false
 type: "legal"
 seo:
   title: "Download OpenFusion" # custom title (optional)
-  description: "" # custom description (recommended)
+  description: "Get the latest versions of the OpenFusion Launcher and Server" # custom description (recommended)
   canonical: "" # custom canonical URL (optional)
   noindex: false # false (default) or true
 ---
@@ -17,8 +17,6 @@ seo:
 Downloads provided below are not signed. Doing so would be cost prohibitive and has other logistical issues.
 
 As a result, you may receive a warning from Windows stating that it is unable to run the app. To bypass this click "More info", then "Run anyway".
-
-<!--On MacOS, ensure you have non App Store apps enabled, then hold the Options key when clicking the .app file, finally select "Open".-->
 {{< /callout >}}
 
 
@@ -43,9 +41,9 @@ The launcher is what you use to connect to FusionFall servers and play the game 
 {{< tab "macOS" >}}
 <mark>**macOS BUILDS ARE EXPERIMENTAL, AND WILL RUN SLOWLY**</mark>
 
-You will need to install a compatibility layer such as Wine or Crossover, then manually configure it in the launch options. On Apple Silicon Macs **it will likely run at less than 15FPS**.
+You will need to install a compatibility layer such as Wine or Crossover into the Applications folder first. Ensure you have non App Store apps enabled, then hold the Options key when clicking the .app file, finally select "Open".
 
-For this reason **we still recommend using the Windows version through virtualization software** such as VMWare Fusion or Parallels. It requires less configuration overall and has significantly better performance.
+On Apple Silicon Macs **it will likely run at less than 15FPS**. For this reason **we still recommend using the Windows version through virtualization software** such as VMWare Fusion or Parallels, which will have significantly better performance.
 
 Currently, the macOS version of the launcher is provided in order to collect early feedback and hopefully drive more development in the future.
 
