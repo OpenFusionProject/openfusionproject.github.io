@@ -43,8 +43,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
+          lfs: true
           submodules: recursive
           fetch-depth: 0
+      - name: Checkout LFS objects
+        run: git lfs checkout
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
