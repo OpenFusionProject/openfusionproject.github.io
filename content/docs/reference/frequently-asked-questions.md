@@ -3,7 +3,7 @@ title: "Frequently Asked Questions"
 description: ""
 summary: ""
 date: 2024-02-27T09:30:56+01:00
-lastmod: 2024-02-27T09:30:56+01:00
+lastmod: .Lastmod
 draft: false
 weight: 800
 toc: true
@@ -15,10 +15,6 @@ seo:
 ---
 
 ## Logging in
-
-### The Remember Me button isnt working, leaving me frozen in the login screen or simply not saving my login information. Is there a fix? {#remember-me}
-
-The Remember Me button doesn't currently do anything. As a result, you need to remember your username and password correctly to login, as while we can recover usernames, we cannot recover passwords if you happen to forget it. 
 
 ### Can I use the same login information on every OpenFusion or OF adjacent server? {#same-login}
 
@@ -32,7 +28,7 @@ No, it will not. Our database is not shared with the original game or with Retro
 
 ### Is this a single player game? I can't seem to find anyone in-game. {#singleplayer-game}
 
-No, if you're playing on our public servers (one of the two default entries in the launcher), the game isn't single player. It's just that there arent many players playing at a given time usually. You can usually find more people playing during the afternoon or on weekends, or if there is an event going on at the moment. 
+No, if you're playing on our public servers (one of the two default entries in the launcher), the game isn't single player. It's just that there arent many players playing at a given time usually. You can usually find more people playing during the afternoon or on weekends, or if there is an event going on at the moment.
 
 If you want the game to be single player, you can always set up a local server by following the instructions on https://github.com/OpenFusionProject/OpenFusion?tab=readme-ov-file#hosting-a-server
 
@@ -70,7 +66,7 @@ In the Original game, you can give yourself items thru commands. To do this, typ
 
 An an example: Using this command to give myself the Ben 10 Jacket would look something like this: `/itemN 1 38 1`, with 1 being the item type *(shirts)*, 38 being the item ID *(the ID of the Ben 10 Jacket)* and 1 being the quantity of item (keep this at one unless you are spawning gumballs or other stackable items).
 
-If you wish to find all the item IDs in the game, refer to [this spreadsheet](https://docs.google.com/spreadsheets/d/1mpoJ9iTHl_xLI4wQ_9UvIDYNcsDYscdkyaGizs43TCg/edit#gid=0).
+If you wish to find all the item IDs in the game, refer to the [item IDs page](/docs/reference/item-id-list) or [this spreadsheet](https://docs.google.com/spreadsheets/d/1mpoJ9iTHl_xLI4wQ_9UvIDYNcsDYscdkyaGizs43TCg/edit#gid=0).
 
 You cannot do this in the Academy server unless you make a private server for yourself.
 
@@ -136,17 +132,21 @@ Unfortunately No. The game UI was never adapted to fit into higher resolutions s
 
 ### Help! I accidentally deleted the public server from my launcher! {#deleted-default-servers}
 
-You can restore the default servers by clicking the version number in the lower right corner, then in the window that pops up, click "Reset to Default Servers".
+You can restore the default servers by clicking the green plus button, switching to the 'Endpoint Server' tab, then entering the following API hosts:
+
+**OpenFusion Public - Original**: `api.dexlabs.systems`
+
+**OpenFusion Public - Academy**: `api.dexlabs.systems/academy`
 
 ### I'm getting a LOGIN UNIMPLM or SHARD UNIMPLM error in the server log. How do I fix this? {#unimplm-packet}
 
-* If it's a shard error and the number ends in 9889: You mixed up the login and shard ports. 
+* If it's a shard error and the number ends in 9889: You mixed up the login and shard ports.
 When adding a new server to the client's list, *always use the login port* (default 23000).
 
-* If it's a login error the number starts with 3187: You likely changed the login and shard to be the same port. 
+* If it's a login error the number starts with 3187: You likely changed the login and shard to be the same port.
 Revert your config.ini to the default of 23000 for login, and 23001 for shard. (they need separate ports in order to work)
 
-* Any other combination: Check that the version you selected in the client matches the server you're connecting to. 
+* Any other combination: Check that the version you selected in the client matches the server you're connecting to.
 For an original server, select beta-20100104, and for an academy server select beta-20111013.
 
 ### Can I play the game on Android devices? Is it possible that a mobile port of the game will come out in the future? {#android-port}

@@ -1,11 +1,13 @@
 ---
-title: "Running on Linux"
+aliases: ['/docs/guides/running-on-linux/']
+title: "Running on Linux (Legacy Client)"
+slug: "running-on-linux"
 description: ""
 summary: ""
 date: 2024-07-14T18:32:54-05:00
 lastmod: 2024-07-14T18:32:54-05:00
 draft: false
-weight: 730
+weight: 1020
 toc: true
 seo:
   title: "" # custom title (optional)
@@ -13,6 +15,12 @@ seo:
   canonical: "" # custom canonical URL (optional)
   noindex: false # false (default) or true
 ---
+
+{{< callout context="caution" title="Caution" icon="outline/alert-triangle" >}}
+This is a guide for the legacy software, OpenFusionClient.
+
+For instructions regarding the modern launcher, see [Quick Start](/docs/guides/quick-start).
+{{< /callout >}}
 
 While the OpenFusion server supports both Windows and Linux (and other Unix-like systems), the game client natively supports only Windows because of the NPAPI Unity Web Player plugin needed to run the game.
 Nevertheless, the client runs very well in Wine if configured properly.
