@@ -144,13 +144,28 @@ Once you have a way to talk to this machine from any network, you need to make s
 Once you have the server running on a machine that you can access from any network, either with a DNS record or directly with the IP address, and the ports are open, you can already connect to your own OpenFusion server. Open the launcher in any computer connected to the internet, add a new server as described in the [Hosting a local server](#Hosting a local server) section, but this time use the IP address or your domain for it, and use the `login` port.
 For example: If your domain is `openfusion.myhouse.com` and your `login` server is running on port `23000`, set the `Server Host` field to `openfusion.myhouse.com:23000`.
 
+#### Tricky detail
 
+You might not be able to access your own server if you are in the same network as it by using it's external IP address. This will be an issue if you setup a server in your home network for example, people from outside your home network will be able to access it just fine but you, from inside your home network, won't.
+For you to be able to access it from inside your home network you'll have to setup the server with your internal IP adress, but people from outside this network won't be able to access it.
+To fully solve this issue you'll have to configure [NAT loopback (also called NAT Hairpinning)](https://en.wikipedia.org/wiki/Network_address_translation#NAT_hairpinning) in your router.
 
-TODO:
-+ Server versions
-	- Original
-	- Academy
-	- Version Numbers
-+ Making an endpoint server
-+ Custom assets for your server
+## Server Versions
+
+OpenFusion supports 2 versions of the game, Original and Academy. The setup process is the same for both versions, the only difference is the server files that you'll download. Both can be found in the linked pages on the top of this doc.
+To run both versions in the same machine, you'll have to download both versions and follow this guide for both versions. That means downloading both versions, configuring the `config.ini` file for each of them, making sure to use different port numbers, as mentioned before, and setting up 2 different systemd services if you want that. Make sure to also setup 2 different domains for this, poiting to the same ip address, and your proxy will have to handle both domains.
+
+### Version numbers
+
+There are many different versions supported by OpenFusion, the 2 main ones are:
++ Academy: `beta-20111013`
++ Original: `beta-20100104`
+
+These are the versions you'll be using to run classic OpenFusion, with the correct assets for Academy and Original.
+For more information on the different versions, check the [OpenFusion Discord Server](https://discord.gg/DYavckB).
+
+### Making an endpoint server
+TODO
+	+ Making an endpoint server
+	+ Custom assets for your server
 + Running a fully standalone server (no fetching assets from the internet)
