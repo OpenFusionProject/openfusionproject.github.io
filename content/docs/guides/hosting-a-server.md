@@ -8,10 +8,10 @@ draft: false
 weight: 720
 toc: true
 seo:
-  title: "" # custom title (optional)
-  description: "" # custom description (recommended)
-  canonical: "" # custom canonical URL (optional)
-  noindex: false # false (default) or true
+  title: "How to host an OpenFusion server"
+  description: "This guide describes in depth how to setup your own OpenFusion server"
+  canonical: ""
+  noindex: false
 ---
 
 There are essentially 2 ways you can host your own OpenFusion server, the first is if you just want to play by yourself on your computer,
@@ -62,17 +62,38 @@ For the sake of completion this guide describes how to configure a server that i
 
 ## Configuring the server
 
-The first thing you want to do is download the Server files as described in the beginning of this guide. Once you have the server files you'll want to edit the `config.ini` file to setup your server. This guide won't go in depth of every possible server setting, check the [OpenFusion GitHub Readme](https://github.com/OpenFusionProject/OpenFusion?tab=readme-ov-file#configuration) for more details on the server configuration.
+The first thing you want to do is download the Server files as described in the beginning of this guide. Once you have the server files you'll want to edit the `config.ini` file to setup your server. This guide won't go in depth of every possible server setting, check the [OpenFusion GitHub Readme](https://github.com/OpenFusionProject/OpenFusion?tab=readme-ov-file#configuration) for more details on server configuration.
 
 The first section you might need to change is `login`. Note that by default the Login Server runs on port `23000`. If you plan on hosting both versions of the game, `academy` and `original` in the same machine, you have to use different ports for each of them. Make you sure pick ports that do not clash with other applications running on the same machine.
 For example, you could have an `original` server running the Login Server on port `23000` and an `academy` server running on port `24000`. If you're planning to have just one version on the server, you can keep the default port.
 
 The next section you need to change is `shard`. Note that the Shard Server uses the next port in the sequence, `23001`, if you're running 2 different versions of the server change this port so it's different from the other version. For example, `original` could run the Shard Server on port `23001` and `academy` on `24001`. Again, make sure the port you set here is not used by any other applications in the same machine.
-The next important setting in this section is the `ip` setting. By default it's set to `127.0.0.1` which is the address of the localhost, that means, the machine that is running the server. To make this server available on the network, be it local or not, you have to set it to the ip address of this machine in your network. For that you have to check you DHCP settings and find out what is the ip assigned to the machine you're running the server on, for example `192.168.18.115`.
+The next important setting in this section is the `ip` setting. By default it's set to `127.0.0.1` which is the address of the localhost, that means, the machine that is running the server. To make this server available on the network, be it local or not, you have to set it to the IP address of this machine in your network. For that you have to check you DHCP settings and find out what is the IP assigned to the machine you're running the server on, for example `192.168.18.115`.
 
 Optionally you could also configure the `monitor` section if you need it to run on another port. Note that the `listenip` here is `127.0.0.1` and you should keep it, as the monitor server will look for the server in this same machine, so this is the correct address.
 
-After configuring the ports and ip address, you're good to move on to the next phase. If you want to further customize your settings this is a good time to do it.
+After configuring the ports and IP address, you're good to move on to the next phase. If you want to further customize your settings this is a good time to do it.
+
+### Quick tip on hosting both versions
+
+If you plan on hosting both versions in the same machine, keep all their files organized so it's easy to tell the configuration files apart. A good directory structure to follow looks something like this (note that API files are present here, but are completely optional, we go into more detail about it in [Making an endpoint server](#Making an endpoint server)):
+```
+.
+|-- academy
+|   |-- OpenFusionServer-Linux-Academy (server files)
+|   |   `-- ...
+|   |-- ofapi (api files)
+|   |   `-- ...
+|   |-- openfusion-academy.service (systemd service for server)
+|   `-- openfusionapi-academy.service (systemd service for api)
+`-- original
+    |-- OpenFusionServer-Linux-Original
+    |   `-- ...
+    |-- ofapi
+    |   `-- ...
+    |-- openfusionapi-original.service
+    `-- openfusion-original.service
+```
 
 ## Server service configuration
 
@@ -130,6 +151,7 @@ If you wish for this server to be available only in your local network, you are 
 To make the server available for people all over the world to play it there are requirements you must meet first.
  1. Having a way to access this machine from any network. Be it via a static IP address or dynamic DNS.
  2. Setting up port Forwarding for the machine
+ 3. Update `config.ini` with your static IP address or dynamic DNS.
 
 ### Accessing the machine from any network
 
@@ -139,6 +161,8 @@ For example, say you're running the server on a Linux machine in your house, and
 
 Once you have a way to talk to this machine from any network, you need to make sure that the ports you setup for the `login` and `shard` servers are open in this machine, and in your router if that's the case. Setting up port forwarding is different depending on your router model, whether you're using a VPS, etc, so make sure to look for a guide for your specific case here. The goal is to have the `login` and `shard` ports (`23000` and `23001` in this example) open.
 
+After setting up port forwarding for the login and shard servers, make sure that the shard server IP address is set to your public external IP address, or your DNS domain that points to it. If you have set it to your internal IP address, like you're setting up a local server, people from outside your network won't be able to play. This setup, however, can have it's issues, see [Tricky detail](#Tricky detail) section bellow.
+
 ### Login into your own server
 
 Once you have the server running on a machine that you can access from any network, either with a DNS record or directly with the IP address, and the ports are open, you can already connect to your own OpenFusion server. Open the launcher in any computer connected to the internet, add a new server as described in the [Hosting a local server](#Hosting a local server) section, but this time use the IP address or your domain for it, and use the `login` port.
@@ -147,13 +171,13 @@ For example: If your domain is `openfusion.myhouse.com` and your `login` server 
 #### Tricky detail
 
 You might not be able to access your own server if you are in the same network as it by using it's external IP address. This will be an issue if you setup a server in your home network for example, people from outside your home network will be able to access it just fine but you, from inside your home network, won't.
-For you to be able to access it from inside your home network you'll have to setup the server with your internal IP adress, but people from outside this network won't be able to access it.
-To fully solve this issue you'll have to configure [NAT loopback (also called NAT Hairpinning)](https://en.wikipedia.org/wiki/Network_address_translation#NAT_hairpinning) in your router.
+For you to be able to access it from inside your home network you'll have to setup the shard server IP address with your internal IP address, but people from outside this network won't be able to access it.
+To fully solve this issue you'll have to configure [NAT loopback (also called NAT Hairpinning)](https://en.wikipedia.org/wiki/Network_address_translation#NAT_hairpinning) in your router. This guide will not go into details on how to do this as it depends on your router and networking setup, but it's easy to find guides for this online.
 
 ## Server Versions
 
 OpenFusion supports 2 versions of the game, Original and Academy. The setup process is the same for both versions, the only difference is the server files that you'll download. Both can be found in the linked pages on the top of this doc.
-To run both versions in the same machine, you'll have to download both versions and follow this guide for both versions. That means downloading both versions, configuring the `config.ini` file for each of them, making sure to use different port numbers, as mentioned before, and setting up 2 different systemd services if you want that. Make sure to also setup 2 different domains for this, poiting to the same ip address, and your proxy will have to handle both domains.
+To run both versions in the same machine, you'll have to download both versions and follow this guide for both versions. That means downloading both versions, configuring the `config.ini` file for each of them, making sure to use different port numbers, as mentioned before, and setting up 2 different systemd services if you want that. Make sure to also setup 2 different domains for this, pointing to the same IP address, and your proxy will have to handle both domains.
 
 ### Version numbers
 
@@ -165,7 +189,34 @@ These are the versions you'll be using to run classic OpenFusion, with the corre
 For more information on the different versions, check the [OpenFusion Discord Server](https://discord.gg/DYavckB).
 
 ### Making an endpoint server
+
+At this point you have a fully working OpenFusion simple server, which you can access via the launcher using the IP address or domain for you server, and you'll have to login every time after connecting to the server.
+
+There's an improvement you can make to this setup so that you can have extra features, such as login memory, account management, monitoring and more. To do this, you'll need to add [OpenFusion API](https://github.com/OpenFusionProject/ofapi) to the server. This is an API (Application Programming Interface) that will communicate with the OpenFusion server to extended it's management features.
+
+*IMPORTANT*: To set OpenFusion API (OF API from now on) it is mandatory that you setup TLS for it, and it becomes a real risk if you don't have it secured with TLS.
+
+#### Getting started with OF API
+The first thing is to read the README of the project, [here](https://github.com/OpenFusionProject/ofapi), then download the code for OF API from the GitHub repository [here](https://github.com/OpenFusionProject/ofapi/tags). Download the latest version, extract it, and build the API executable with `cargo build --release`, this command will generate a binary in `./target/release/ofapi`.
+
+Once you have the program built, you'll want to change the `config.toml` file to configure it according to your server setup.
+You must enable (uncomment) the `core` and `game` sections, and those must be configured properly. It is also recommended that you enable and configure the `monitor` section, so the launcher can report how many players are online to the users.
+
+#### Configuring OF API
+
+This is pretty straight forward, in `core` section, set `server_name` to whatever you'd like to name your server, `public_url` to your server's domain (the one you setup with the DNS records), you could configure it with the IP directly too. For `db_path` use the path to the `database.db` in the server folder, if you followed the recommended directory structure this will be `../OpenFusionServer-Linux-Academy/database.db`, `templates_dir` set to `./templates`, `port` to whatever port you like, just make sure to use a port that doesn't clash with any other application in your system.
+
+For `bind_ip` you'll use `0.0.0.0` if your proxy is running in another machine, or `127.0.0.1` if you proxy is running in the same machine as OF API. We'll talk more about proxy configuration in a moment.
+
+Now moving to `tls` section, this must be enabled if you plan on exposing the server to the public, however, you can handle TLS through your proxy. This tutorial will describe how to handle TLS via a proxy, like Nginx or caddy, if you wish to handle TLS through OF API, the README has more details about it.
+For the TLS section just set `cert_path` and `key_path` to whatever, for example, `cert.pem`. The important setting here is the port, which again, has to be set to a port that is not used anywhere else. For keeping things easy to remember it's recommended to set this port to `4433`, as port `443` is the default TLS port, but in practice you can set it to whatever port you want.
+
 TODO
-	+ Making an endpoint server
+game section
+monitor section
+account section
+auth section
+
+TODO
 	+ Custom assets for your server
 + Running a fully standalone server (no fetching assets from the internet)
