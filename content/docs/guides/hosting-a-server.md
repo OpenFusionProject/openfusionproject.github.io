@@ -208,15 +208,126 @@ This is pretty straight forward, in `core` section, set `server_name` to whateve
 
 For `bind_ip` you'll use `0.0.0.0` if your proxy is running in another machine, or `127.0.0.1` if you proxy is running in the same machine as OF API. We'll talk more about proxy configuration in a moment.
 
-Now moving to `tls` section, this must be enabled if you plan on exposing the server to the public, however, you can handle TLS through your proxy. This tutorial will describe how to handle TLS via a proxy, like Nginx or caddy, if you wish to handle TLS through OF API, the README has more details about it.
-For the TLS section just set `cert_path` and `key_path` to whatever, for example, `cert.pem`. The important setting here is the port, which again, has to be set to a port that is not used anywhere else. For keeping things easy to remember it's recommended to set this port to `4433`, as port `443` is the default TLS port, but in practice you can set it to whatever port you want.
+Now moving to `tls` section, this must be enabled if you plan on exposing the server to the public, however, you can handle TLS through your proxy. This tutorial will describe how to handle TLS via a proxy, like Nginx or caddy, if you wish to handle TLS through OF API, the `README` has more details about it.
+For the TLS section, if you're using TLS through OF API, set `cert_path` and `key_path` to the path to your TLS certificates, if you're using TLS through a proxy you can set these values to whatever, for example, `cert.pem`.
+
+The important setting here is the port, which again, has to be set to a port that is not used anywhere else. For keeping things easy to remember it's recommended to set this port to `4433`, as port `443` is the default TLS port, but in practice you can set it to whatever port you want.
+
+In the `game` section you have to set the versions list with the UUID for the versions that your server supports. For just running a basic Academy server you'll have this set to `["6543a2bb-d154-4087-b9ee-3c8aa778580a"]`, which is the UUID corresponding to version `beta-20111013`, for a basic Original server you'll set it to  `["ec8063b2-54d4-4ee1-8d9e-381f5babd420"]`, which corresponds to the UUID for the `beta-20100104` version. If you wish to support other versions you'll have to check for their UUID in the Launcher files, to find it go to the folder where you downloaded and extracted the launcher, and go to `defaults/versions/`. In this folder you'll find a json file describing each of the versions, and inside there's an UUID field, which is the value you're looking for here.
+
+For `login_address` you'll set your server's IP address or it's domain, and the port that you configured in the server for the login address, in this example `23000` for Original and `24000` for Academy. So it should look like this: `my.openfusion.original.server.com:23000`. If you want to have a custom loading screen you also have to set `custom_loading_screen` to `true` and put it's files in `static/launcher/loading`.
+
+In the `monitor` section keep `route = "/status"` and make sure that `monitor_ip` is set to the IP and port of the machine that is running the server. In this example it's the same machine, so use `127.0.0.1`, and the port is the value you set in the server's `config.ini` for the monitor service. For example `monitor_ip = "127.0.0.1:8003"`.
+
+In the `account` section you'll configure how to manage accounts, so if the user needs to verify their email, if an email is required, etc. This will depend on how you want to manage your server, so feel free to set it up however you like. The subroutes settings can be left as the defaults, no need to change those. Pay special attention to the `account_level` settings, as that will determine the permission level for the accounts created in your server, take a look at the description bellow for the account level descriptions.
+```
+# account permission level that will be set upon character creation
+1 = default, will allow *all* commands
+30 = allow some more "abusable" commands such as /summon
+50 = only allow cheat commands, like /itemN and /speed
+99 = standard user account, no cheats allowed
+any number higher than 50 will disable commands
+```
+
+In the `auth` section you can leave the settings as is, except for `secret_path`, which is recommended to use a random string of numbers and letters to keep your server secure. You can generate a random string in linux with the following command: `echo $(date +%s | sha256sum | base64 | head -c 32)`.
+
+Here's an example `config.toml` file for OF API:
+```
+[core]
+server_name = "My OpenFusion Server"
+public_url = "api.myserver.xyz"
+db_path = "../OpenFusionServer-Linux-Academy/database.db"
+template_dir = "./templates"
+bind_ip="0.0.0.0"
+port = 8888
+
+[tls]
+cert_path = "cert.pem" # app-level TLS only
+key_path = "key.pem" # app-level TLS only
+port = 4433
+
+[game]
+versions = ["6543a2bb-d154-4087-b9ee-3c8aa778580a"]
+login_address = "openfusion.myserver.xyz:24000"
+custom_loading_screen = false
+
+[monitor]
+route = "/status"
+monitor_ip = "127.0.0.1:8003"
+
+[moderation]
+namereq_route = "/namereq"
+
+[rankinfo]
+route = "/getranks"
+placeholders = true
+
+[account]
+route = "/account"
+
+register_subroute = "/register"
+account_level = 99
+require_email = false
+require_email_verification = false
+
+email_verification_subroute = "/verify"
+email_verification_valid_secs = 3_600 # one hour
+
+update_email_subroute = "/update/email"
+update_password_subroute = "/update/password"
+
+temporary_password_subroute = "/otp"
+temporary_password_valid_secs = 3_600 # one hour
+
+[auth]
+route = "/auth"
+refresh_subroute = "/session"
+secret_path = "ZWQzYjFiYzZjM2YyZThhYjRmMjM0Y2M1"
+valid_secs_refresh = 604_800 # one week
+valid_secs_session = 900 # 15 minutes
+
+[cookie]
+route = "/cookie"
+valid_secs = 60
+
+[legacy]
+index_route = "/index.html"
+assetinfo_route = "/assetInfo.php"
+logininfo_route = "/loginInfo.php"
+```
+
+With the configuration set you can now start the OF API server, if you are on Linux it's recommended to create a systemd service for it, as described in [Server service configuration](#Server service configuration). The difference is that this service will execute OF API instead of the OpenFusion server. You can use this as a template, remember to change the placeholders as described previously:
+```
+[Unit]
+Description=Open Fusion API - <SERVER_VERSION>
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+WorkingDirectory=<PATH/TO/OFAPI/DIRECTORY>
+ExecStart=<PATH/TO/OFAPI/DIRECTORY>/target/release/ofapi
+Restart=on-failure
+RestartSec=10
+User=root
+Group=root
+Type=simple
+TimeoutStartSec=300
+TimeoutStopSec=120
+
+[Install]
+WantedBy=multi-user.target
+```
+
+#### Configuring a Proxy for OF API
+TODO
+
+
+With OF API and it's OpenFusion server up and running you can now open the launcher and connect to your endpoint server using the `public_url` you configured in `config.toml`.
+{{< figure
+  src="images/2.0-launcher-adding-endpoint.png"
+  alt="Adding a simple server"
+>}}
 
 TODO
-game section
-monitor section
-account section
-auth section
-
-TODO
-	+ Custom assets for your server
++ Custom assets for your server
 + Running a fully standalone server (no fetching assets from the internet)
