@@ -330,6 +330,8 @@ The configuration for the reverse proxy is pretty simple, basically you just hav
 
 That's the general idea, which you can apply for every reverse proxy. This guide will only describe how to set it up with nginx, and also provide an example with caddy. Nginx is a very popular tool and you can easily find tutorials on how to configure it in detail, this guide will focus on the top level steps on setting it up, it is up to you to choose the best option for your scenario.
 
+*IMPORTANT:* If you're running both OpenFusion versions in the same machine, you'll have to do this twice, once for each OF API instance for each version. So you'll need 2 different domains, one for each version, like `openfusion-academy.mydomain.xyz` and `openfusion-original.mydomain.xyz`. You'll then create 2 proxy configurations, one for each domain, and point them to the correct ports that talk to each OF API instance. For example `openfusion-academy.mydomain.xyz` is set to talk to OF API running on `127.0.0.1:8888` and `openfusion-original.mydomain.xyz` is set to talk to OF API running on `127.0.0.1:9999`.
+
 ##### Setting up Nginx
 
 1. Install Nginx
