@@ -101,9 +101,10 @@ After configuring the ports and IP address, you're good to move on to the next p
 
 ### Quick tip on hosting both versions
 
-If you plan on hosting both versions in the same machine, keep all their files organized so it's easy to tell the configuration files apart. A good directory structure to follow looks something like this (note that API files are present here, but are completely optional, we go into more detail about it in [Making an endpoint server](#Making an endpoint server)):
+If you plan on hosting both versions in the same machine, keep all their files organized so it's easy to tell the configuration files apart. A good directory structure to follow, especially when using a dedicated user, is to place all server-related files in `/opt/openfusion`.
+
 ```
-.
+/opt/openfusion/
 |-- academy
 |   |-- OpenFusionServer-Linux-Academy (server files)
 |   |   `-- ...
@@ -119,6 +120,24 @@ If you plan on hosting both versions in the same machine, keep all their files o
     |-- openfusionapi-original.service
     `-- openfusion-original.service
 ```
+
+## Creating a dedicated user for the server
+
+If you're running the server on a Linux machine, it is highly recommended to run it under a dedicated, unprivileged user account.
+
+For this, create a new system group and user named `fusion`:
+```bash
+sudo groupadd --system fusion
+sudo useradd --system -g fusion -d /opt/openfusion -s /bin/false fusion
+```
+These commands create a `fusion` group and a `fusion` user. This user can't log in to a shell (`/bin/false`) and its home directory is set to `/opt/openfusion`.
+
+Next, create the directory structure and give the `fusion` user ownership of it:
+```bash
+sudo mkdir -p /opt/openfusion
+sudo chown -R fusion:fusion /opt/openfusion
+```
+Now you can move your server and API files into the appropriate directories inside `/opt/openfusion`, as shown in the structure above. For example, you would move your extracted `OpenFusionServer-Linux-Original` files into `/opt/openfusion/original/server/`. Remember to run `chown` again if you add new files as root.
 
 ## Server service configuration
 
@@ -139,12 +158,12 @@ After=network-online.target
 Wants=network-online.target
 
 [Service]
-WorkingDirectory=<PATH/TO/OPENFUSION/SERVER/FILES>
-ExecStart=<PATH/TO/OPENFUSION/SERVER/FILES>/fusion
+WorkingDirectory=/opt/openfusion/<SERVER_VERSION>/server
+ExecStart=/opt/openfusion/<SERVER_VERSION>/server/fusion
 Restart=on-failure
 RestartSec=10
-User=root
-Group=root
+User=fusion
+Group=fusion
 Type=simple
 TimeoutStartSec=300
 TimeoutStopSec=120
@@ -153,7 +172,7 @@ TimeoutStopSec=120
 WantedBy=multi-user.target
 ```
 
-Make sure to change the `<PATH/TO/OPENFUSION/SERVER/FILES>` to the path of your server files. To get this path you can open a terminal in the folder that contains the `config.ini` file and run the `pwd` command.
+Make sure to replace `<SERVER_VERSION>` with `original` or `academy`. The paths for `WorkingDirectory` and `ExecStart` now point to the standardized location we created.
 
 Note that the `ExecStart` line must end with `/fusion`, as this is the program that runs the OpenFusion server.
 
@@ -162,7 +181,7 @@ To start the server you can now run:
 ```
 sudo systemctl daemon reload
 sudo systemctl enable openfusion-<SERVER_VERSION>.service
-sydo systemctl start openfusion-<SERVER_VERSION>.service
+sudo systemctl start openfusion-<SERVER_VERSION>.service
 ```
 
 ## Hosting on a Local Network (LAN)
@@ -334,7 +353,7 @@ assetinfo_route = "/assetInfo.php"
 logininfo_route = "/loginInfo.php"
 ```
 
-With the configuration set you can now start the OF API server, if you are on Linux it's recommended to create a systemd service for it, as described in [Server service configuration](#Server service configuration). The difference is that this service will execute OF API instead of the OpenFusion server. You can use this as a template, remember to change the placeholders as described previously:
+With the configuration set you can now start the OF API server, if you are on Linux it's recommended to create a systemd service for it, as described in [Server service configuration](#Server-service-configuration). The difference is that this service will execute OF API instead of the OpenFusion server. You can use this as a template, remember to change the placeholders as described previously:
 
 ```
 [Unit]
@@ -343,12 +362,12 @@ After=network-online.target
 Wants=network-online.target
 
 [Service]
-WorkingDirectory=<PATH/TO/OFAPI/DIRECTORY>
-ExecStart=<PATH/TO/OFAPI/DIRECTORY>/target/release/ofapi
+WorkingDirectory=/opt/openfusion/<SERVER_VERSION>/ofapi
+ExecStart=/opt/openfusion/<SERVER_VERSION>/ofapi/target/release/ofapi
 Restart=on-failure
 RestartSec=10
-User=root
-Group=root
+User=fusion
+Group=fusion
 Type=simple
 TimeoutStartSec=300
 TimeoutStopSec=120
