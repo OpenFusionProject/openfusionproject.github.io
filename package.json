@@ -14,7 +14,7 @@
   "dependencies": {
     "@tabler/icons": "^3.17.0",
     "@thulite/doks-core": "^1.7.0",
-    "@thulite/images": "^3.3.0",
+    "@thulite/images": "^3.3.3",
     "@thulite/inline-svg": "^1.2.0",
     "@thulite/seo": "^2.4.0",
     "thulite": "^2.5.0"
