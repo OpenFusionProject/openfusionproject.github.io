@@ -82,7 +82,36 @@ The setup for a multiplayer server is not so different from a solo server, but i
 + From this point on this guide will get more technical, however, it won't go in depth on the technicalities. There will be references and suggestions on tools to use and where to find tutorials for those tools. Nothing here is too complicated and there are many good tutorials today on these topics.
 + The exact steps that you need to take for each part of the setup will vary depending on the architecture you're using here. For example, a homelab is different than using a VPS. This guide will describe what needs to be setup and how, but you will have to look into how exactly to set it up for your case.
 
-## Configuring the server
+## Automated Server Setup (Linux Only)
+
+If you're running the server on linux there's an automated bootstrapping script that will set up a basic OpenFusion Server for you.
+
+Run the commands bellow directly in a terminal to download and run the bootstrapping script.
+
+```bash
+# Download the script
+wget https://openfusionproject.github.io/openfusion-server-bootstrapper.sh
+
+# Make it executable
+chmod +x openfusion-server-bootstrapper.sh
+
+# Run the script as root
+sudo ./openfusion-server-bootstrapper.sh
+```
+
+The script will guide you through the setup process with interactive prompts. For help and additional options, run:
+
+```bash
+./openfusion-server-bootstrapper.sh --help
+```
+
+**Note:** The bootstrapper automates most of the steps described in the manual sections below. If you prefer to understand each step or need to customize your setup beyond what the script offers, continue with the manual configuration sections.
+
+## Manual Configuration
+
+If you're not using the automated bootstrapper, or if you're on Windows, follow the manual setup instructions below.
+
+### Configuring the server
 
 The first thing you want to do is download the Server files as described in the beginning of this guide. Once you have the server files you'll want to edit the `config.ini` file to setup your server. This guide won't go in depth of every possible server setting, check the [OpenFusion GitHub Readme](https://github.com/OpenFusionProject/OpenFusion?tab=readme-ov-file#configuration) for more details on server configuration.
 
