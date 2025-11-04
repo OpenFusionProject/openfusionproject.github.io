@@ -852,20 +852,6 @@ initial_server_setup() {
 }
 
 ###########################################
-# Main Flow: Proxy & TLS Setup
-###########################################
-
-proxy_tls_setup() {
-    print_header "Proxy & TLS Setup"
-    echo ""
-    echo "This feature will configure Nginx/Caddy and SSL certificates"
-    echo "for your OpenFusion endpoint server."
-    echo ""
-    echo "Coming soon!"
-    echo ""
-}
-
-###########################################
 # Usage Information
 ###########################################
 
@@ -875,14 +861,7 @@ show_usage() {
     echo "OpenFusion Server Bootstrapper - Automated server setup"
     echo ""
     echo "Options:"
-    echo "  --proxy-setup    Configure Nginx/Caddy reverse proxy and TLS (Coming Soon)"
     echo "  --help, -h       Show this help message"
-    echo ""
-    echo "Default behavior (no options): Run initial server setup"
-    echo ""
-    echo "Examples:"
-    echo "  sudo $0                  # Run initial server setup"
-    echo "  sudo $0 --proxy-setup    # Configure proxy and TLS"
     echo ""
 }
 
@@ -899,9 +878,7 @@ echo ""
 check_requirements
 
 # Parse command line arguments
-if [ "$1" = "--proxy-setup" ]; then
-    proxy_tls_setup
-elif [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
+if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
     show_usage
     exit 0
 elif [ -n "$1" ]; then
