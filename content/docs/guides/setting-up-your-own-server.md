@@ -474,8 +474,3 @@ With OF API and it's OpenFusion server up and running you can now open the launc
   src="images/2.0-launcher-adding-endpoint.png"
   alt="Adding a simple server"
 >}}
-
-
-TODO
-+ Custom assets for your server
-+ Running a fully standalone server (no fetching assets from the internet)
