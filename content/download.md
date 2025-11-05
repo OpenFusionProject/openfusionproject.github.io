@@ -22,7 +22,7 @@ As a result, you may receive a warning from Windows stating that it is unable to
 
 ## Download Launcher
 
-The latest stable launcher is version **2.1.1**.
+The latest stable launcher is version **2.1.2**.
 
 The launcher is what you use to connect to FusionFall servers and play the game - it can be downloaded below.
 
