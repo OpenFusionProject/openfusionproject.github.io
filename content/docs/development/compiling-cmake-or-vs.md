@@ -32,8 +32,6 @@ Please note that the OpenFusion CMakeLists prevents you from creating an in-sour
 
 ## Visual Studio
 
-If you are a Visual Studio user, you should probably use CMake to build OpenFusion. There exist [forks](https://github.com/josephl70/OpenFusion_VS) of OpenFusion maintained by other people that may not necessarily always be up-to-date, if you'd like to go that route instead. Otherwise, continue on if you'd like to use CMake.
-
 ### Install the CMake tools
 
 To begin, make sure you have Visual Studio with the CMake tools installed. If you don't have Visual Studio, you can grab it from Microsoft's website. The "Community" version will do just fine for OpenFusion. Simply install "C++ CMake tools for Windows".
