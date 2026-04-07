@@ -23,3 +23,5 @@ seo:
 4. Once you've added the server to the list, connect to it and log in. If the account does not exist yet, it will be created automatically.
 
 If you run into any issues, try checking [the FAQ](/docs/reference/frequently-asked-questions) or ask for assistance in our Discord server.
+
+For a more detailed guide see [Setting Up Your Own Server](/docs/guides/setting-up-your-own-server).
