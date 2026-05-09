@@ -2,7 +2,7 @@
 title: "Download"
 description: ""
 summary: ""
-date: 2024-06-24T17:19:07+02:00
+date: 2026-05-09T01:12:57+00:00
 lastmod: .Lastmod
 draft: false
 type: "legal"
@@ -22,7 +22,7 @@ As a result, you may receive a warning from Windows stating that it is unable to
 
 ## Download Launcher
 
-The latest stable launcher is version **2.2.2**.
+The latest stable launcher is version **2.2.3**.
 
 The launcher is what you use to connect to FusionFall servers and play the game - it can be downloaded below.
 
