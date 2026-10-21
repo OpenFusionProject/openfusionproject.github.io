@@ -39,13 +39,8 @@ The launcher is what you use to connect to FusionFall servers and play the game 
 {{< /tab >}}
 
 {{< tab "macOS" >}}
-<mark>**macOS BUILDS ARE EXPERIMENTAL, AND WILL RUN SLOWLY**</mark>
 
 You will need to install a compatibility layer such as Wine or Crossover into the Applications folder first. Ensure you have non App Store apps enabled, then hold the Options key when clicking the .app file, finally select "Open".
-
-On Apple Silicon Macs **it will likely run at less than 15FPS**. For this reason **we still recommend using the Windows version through virtualization software** such as VMWare Fusion or Parallels, which will have significantly better performance.
-
-Currently, the macOS version of the launcher is provided in order to collect early feedback and hopefully drive more development in the future.
 
 {{< card-grid >}}
 {{< link-card title="macOS Universal"  description=".dmg file" href="https://github.com/OpenFusionProject/OpenFusionLauncher/releases/latest/download/OpenFusionLauncher-MacOS-Universal.dmg" >}}
