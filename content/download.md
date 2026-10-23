@@ -14,15 +14,13 @@ seo:
 ---
 
 {{< callout context="note" title="Note" icon="outline/info-circle" >}}
-Downloads provided below are not signed. Doing so would be cost prohibitive and has other logistical issues.
-
-As a result, you may receive a warning from Windows stating that it is unable to run the app. To bypass this click "More info", then "Run anyway".
+You may receive a warning from Windows stating that it is unable to run the app. To bypass this click "More info", then "Run anyway".
 {{< /callout >}}
 
 
 ## Download Launcher
 
-The latest stable launcher is version **2.2.4**.
+The latest stable launcher is version **2.3.0**.
 
 The launcher is what you use to connect to FusionFall servers and play the game - it can be downloaded below.
 
