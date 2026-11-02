@@ -20,7 +20,7 @@ You may receive a warning from Windows stating that it is unable to run the app.
 
 ## Download Launcher
 
-The latest stable launcher is version **2.4.0**.
+The latest stable launcher is version **2.4.1**.
 
 The launcher is what you use to connect to FusionFall servers and play the game - it can be downloaded below.
 
@@ -48,7 +48,7 @@ You will need to install a compatibility layer such as Wine or Crossover into th
 
 {{< tab "Linux" >}}
 
-**If you are using NVIDIA proprietary drivers, there is currently a bug in the driver that will cause the launcher to crash on startup.**
+**If you are using NVIDIA proprietary drivers, there is currently a bug in the driver that will cause older launcher versions (v2.4.0 or older) to crash on startup.**
 
 As a workaround, you can set this environment variable to resolve the issue:
 ```sh
