@@ -48,7 +48,7 @@ You will need to install a compatibility layer such as Wine or Crossover into th
 
 {{< tab "Linux" >}}
 
-**If you are using NVIDIA proprietary drivers, there is a bug in older launchers that will cause the launcher to crash on startup.**
+**If you are using NVIDIA proprietary drivers, there is currently a bug in the driver that will cause the launcher to crash on startup.**
 
 As a workaround, you can set this environment variable to resolve the issue:
 ```sh
